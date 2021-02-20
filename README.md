@@ -69,3 +69,53 @@ This is a open an interactive shell. This shell is a MongoDB environment.
 #### Download MongoDB Compass for GUI Interface
 Download link [MongoDB Compass](https://www.mongodb.com/try/download/compass)
 
+
+## Mongoose
+How to we connect to a mongo database from a node.js application.
+basically two options
+1. Native MongoDB driver
+2. Package called [Mongoose](https://mongoosejs.com/)
+
+ORM: Object Relational Mapper
+ODM: Object Data Mapper
+
+### Creating a Mongo Document with Mongoose
+
+Install some node package
+```bash
+npm i mongoose mongodb
+```
+
+Create a `test.js` file
+
+```js
+const { MongoServerSelectionError } = require('mongodb');
+const mongoose = require('mongoose');
+
+const connect = () => {
+    return mongoose.connect('mongodb://localhost:27017',)
+}
+
+const student = new mongoose.Schema({
+    firstName: String
+});
+
+const Student = mongoose.model('student', student);
+
+connect()
+    .then(async connection => {
+        const student = await Student.create({ firstName: 'Aman' });
+        console.log(student);
+    })
+    .catch(e => console.error(e))
+```
+
+Start a mongoDB server than run this file.
+```bash
+$ node test.js
+{ _id: 6030d1b71c2ce33430cf2462, firstName: 'Aman', __v: 0 }
+```
+
+`_id` is a unique id.
+`first name` is a accept string value.
+`__v` is a SCHEMA version.
