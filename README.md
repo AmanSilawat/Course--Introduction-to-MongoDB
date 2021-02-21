@@ -119,3 +119,7 @@ $ node test.js
 `_id` is a unique id.
 `first name` is a accept string value.
 `__v` is a SCHEMA version.
+
+
+### Mongoose Doc
+Mongoose [API Docs](https://mongoosejs.com/docs/api.html#model)

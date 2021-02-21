@@ -7,21 +7,19 @@ const connect = () => {
 
 const student = new mongoose.Schema({
     firstName: {
-        firstName: {
-            type: String,
-            require: true,
-            unique: true
+        type: String,
+        require: true,
+        unique: true
+    },
+    faveFoods: [{ type: String }],
+    info: {
+        school: {
+            type: String
         },
-        faveFoods: [{ type: String }],
-        info: {
-            school: {
-                type: String
-            },
-            shoeSize: {
-                type: Number
-            }
+        shoeSize: {
+            type: Number
         }
-    }
+    },
 }, {timestamps: true});
 
 const Student = mongoose.model('student', student);
